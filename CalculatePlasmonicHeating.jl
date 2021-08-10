@@ -1,11 +1,10 @@
 # Add packages
 using Pkg
 #Pkg.add("PyCall")
+#Pkg.add("Distributions")
 #Pkg.add("LorentzDrudeMetals")
 #Pkg.add("Plots")
-#Pkg.add("GR")
-#Pkg.add("PyPlot")
-#Pkg.add("Gadfly")
+#Pkg.add("GRUtils")
 
 # Load packages
 using PyCall
@@ -18,12 +17,17 @@ include("Wavelength_to_Energy.jl")
 # Function Plasmonic Heating
 function PlasmonicHeating(LaserWavelengthStart_nm, LaserWavelengthEnd_nm)
 
-    # Collection of supplied function variables
+    # Collection of supplied input variables
     LaserWavelengths_nm = collect(range(LaserWavelengthStart_nm,
                                 stop = LaserWavelengthEnd_nm,
                                 step = 1))
-    # Use function defined in Wavelength_to_Energy.jl
+
+    # Convert Wavelength unit from nm to eV, useing the function defined in
+    # Wavelength_to_Energy.jl
     LaserWavelengths_eV = Wavelength_to_Energy(LaserWavelengths_nm)
 
-    print(LorentzDrudeMetals.Au[LaserWavelengths_eV])
+    # Calculate the dielectric function of a nanoparticle depending of the
+    # incident wavelength
+
+    LorentzDrudeMetals.Au[LaserWavelengths_eV]
 end
