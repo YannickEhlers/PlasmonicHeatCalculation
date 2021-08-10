@@ -10,6 +10,7 @@ using Pkg
 # Load packages
 using PyCall
 using LorentzDrudeMetals
+using Plots
 
 # Load functions
 include("Wavelength_to_Energy.jl")
@@ -17,14 +18,12 @@ include("Wavelength_to_Energy.jl")
 # Function Plasmonic Heating
 function PlasmonicHeating(LaserWavelengthStart_nm, LaserWavelengthEnd_nm)
 
+    # Collection of supplied function variables
     LaserWavelengths_nm = collect(range(LaserWavelengthStart_nm,
                                 stop = LaserWavelengthEnd_nm,
                                 step = 1))
-
+    # Use function defined in Wavelength_to_Energy.jl
     LaserWavelengths_eV = Wavelength_to_Energy(LaserWavelengths_nm)
 
-    print(LaserWavelengths_eV)
     print(LorentzDrudeMetals.Au[LaserWavelengths_eV])
 end
-
-PlasmonicHeating(100, 800)
