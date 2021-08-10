@@ -4,7 +4,6 @@ using Pkg
 #Pkg.add("Distributions")
 #Pkg.add("LorentzDrudeMetals")
 #Pkg.add("Plots")
-#Pkg.add("GRUtils")
 
 # Load packages
 using PyCall
