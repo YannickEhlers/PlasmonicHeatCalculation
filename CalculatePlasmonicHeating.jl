@@ -1,16 +1,16 @@
-# Add packages
+# Add Julia packages
 using Pkg
 #Pkg.add("PyCall")
 #Pkg.add("Distributions")
 #Pkg.add("LorentzDrudeMetals")
 #Pkg.add("Plots")
 
-# Load packages
+# Load Julia packages
 using PyCall
 using LorentzDrudeMetals
 using Plots
 
-# Load functions
+# Load functions from other files
 include("Wavelength_to_Energy.jl")
 
 # Function Plasmonic Heating
